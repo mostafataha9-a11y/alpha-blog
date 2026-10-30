@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=Almarai:wght@400;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap');
+
+@theme {
+  --font-sans: 'Cairo', 'Tajawal', 'Almarai', 'Noto Sans Arabic', 'Segoe UI Arabic', 'SF Pro Arabic', 'Geeza Pro', 'Tahoma', 'Arial', sans-serif;
+  --font-serif: 'Cairo', 'Tajawal', 'Almarai', 'Noto Sans Arabic', 'Segoe UI Arabic', 'SF Pro Arabic', 'Geeza Pro', 'Tahoma', 'Arial', sans-serif;
+}
+
+:root {
+  --font-arabic-modern: 'Cairo', 'Tajawal', 'Almarai', 'Noto Sans Arabic', 'Segoe UI Arabic', 'SF Pro Arabic', 'Geeza Pro', 'Tahoma', 'Arial', sans-serif;
+  --font-cairo: var(--font-arabic-modern);
+}
+
+html {
+  font-family: var(--font-arabic-modern) !important;
+  direction: rtl;
+  text-align: right;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-arabic-modern) !important;
+  direction: rtl;
+  text-align: right;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Enforce pure Modern Standard Arabic across all Tailwind font utility classes */
+.font-sans, .font-serif {
+  font-family: var(--font-arabic-modern) !important;
+}
+
+/* Ensure inputs, buttons, and textareas inherit Arabic font */
+input, textarea, select, button {
+  font-family: inherit;
+  direction: rtl;
+}
