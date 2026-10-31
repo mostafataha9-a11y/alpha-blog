@@ -75,6 +75,28 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cookieParser());
 
+// ==========================================
+// Hardcoded Admin Direct Authentication Bypass
+// ==========================================
+const ADMIN_EMAIL = "mahmoudahmedhessien032@gmail.com";
+const ADMIN_PASSWORD = "#%5rU)2;-YHZzL";
+
+app.post('/api/auth/login', (req: Request, res: Response) => {
+  const { email, password } = req.body;
+  if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+    return res.status(200).json({
+      success: true,
+      message: "تم تسجيل الدخول بنجاح",
+      token: "admin-authenticated-token"
+    });
+  }
+  return res.status(401).json({
+    success: false,
+    message: "بيانات الاعتماد غير صحيحة"
+  });
+});
+// ==========================================
+
 // Universal UTF-8 charset enforcement across all routes & static/HTML responses
 app.use((req: Request, res: Response, next: NextFunction) => {
   const originalSetHeader = res.setHeader;
